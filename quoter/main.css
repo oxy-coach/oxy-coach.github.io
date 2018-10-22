@@ -1,0 +1,82 @@
+@import url("https://fonts.googleapis.com/css?family=Marck+Script");
+
+.main {
+  display: flex;
+  background-color: black;
+  width: 800px;
+  height: 600px;
+  margin: 20px auto;
+  justify-content: space-around;
+  align-items: center;
+  position: relative;
+}
+.main .swiper-slide {
+  
+}
+.main .slide-wrapper {
+  height: 600px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 90%;
+  margin: 0 auto;
+}
+.main .overlay {
+  width: 100%;
+  height: 100%;
+  background: black;
+  opacity: 0;
+  position: absolute;
+}
+.main .photo_main {
+  width: 300px;
+  display: flex;
+  max-height: 300px;
+  height: 100%;
+}
+.main .photo_main img {
+  margin: auto;
+  max-height: 100%;
+  max-width: 100%;
+  border: 1px solid white;
+}
+.main .quote_main {
+  color: white;
+  font-family: "Segoe UI";
+  display: flex;
+}
+.main .quote_main .quote_text {
+  font-family: "Marck Script";
+  font-size: 25px;
+  max-width: 350px;
+}
+.main .quote_main .quote_auth {
+  position: absolute;
+  bottom: 35px;
+  right: 35px;
+  text-align: right;
+}
+
+@media (max-width: 768px) {
+  .main {
+    width: auto;
+  }
+  .main .slide-wrapper {
+    height: 600px;
+    width: 100%;
+    flex-direction: column;
+    padding: 2vw 0;
+    align-items: center;
+    justify-content: center;
+
+  }
+  .main .photo_main {
+    margin-bottom: 5vw;
+    width: 100%;
+    max-width: 90%;
+  }
+  .main .quote_main {
+    width: 100%;
+    max-width: 300px;
+  }
+}

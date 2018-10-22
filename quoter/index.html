@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Цитатник Синицы</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.5/css/swiper.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.5/js/swiper.min.js"></script>
+    <script src="data.js?v=1.1"></script>
+    <link rel="stylesheet" href="main.css?v=1.1">
+    <meta name="viewport" content="width=device-width">
+</head>
+<body>
+  <div id="app">
+    <div id="main_cont" class="main">
+      <div class="overlay"></div>
+      <template>
+
+      <!-- swiper -->
+        <div class="swiper-container">
+          <div class="swiper-wrapper">
+            <!-- It is important to set "left" style prop on every slide -->
+            <div class="swiper-slide"
+              v-for="(quote, index) in quotes"
+              :key="index"
+            >
+            <div class="slide-wrapper">
+              <div class="photo_main">
+                <img :src="getAuthor(quote.author).photo">
+              </div>
+              <div class="quote_main">
+                <div class="quote_cont">
+                  <div class="quote_text">
+                    "{{quote.quote}}"
+                  </div>
+                  <div class="quote_auth">
+                    &copy; {{getAuthor(quote.author).name}}
+                  </div>
+                </div>
+              </div>
+            </div>
+            </div>
+          </div>
+        </div>
+        <!-- ... -->
+
+      </template>
+    </div>
+  </div>
+
+  <script>
+
+    var app = new Vue({
+      el: '#app',
+      data: quotesData,
+      methods: {
+        getAuthor: function (id) {
+          return this.authors.find(function(element){
+            return (element.id == id) ;
+          });
+        }
+      },
+      beforeMount() {
+        this.quotes.sort(() => {return 0.5 - Math.random();});
+      },
+      mounted: function () {
+        const swiper = new Swiper('.swiper-container', {
+          loop: true,
+          autoplay: {
+            delay: 7000,
+          },
+        });
+      },
+    })
+  </script>
+</body>
+</html>
